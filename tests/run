@@ -12,6 +12,7 @@ function run() {
 	set +e
 	$semvercmp_path \
 		$test_args \
+		2>&1 \
 		>|$test/actual
 
 	echo "Exit code: $?" >>$test/actual

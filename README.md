@@ -1,16 +1,17 @@
-SEM.VER.CMP
+SEM·VER·CMP
 
 # Overview
 
-SEM.VER.CMP compares [semantic version](https://semver.org/) numbers.
+SEM·VER·CMP compares [semantic version](https://semver.org/) numbers.
 
-Handy for comparing versions in continuous integration (CI) scripts, &c.
+Useful for comparing versions in continuous integration (CI) scripts, &c.
 
 # Features
 
-* [X] Compare two semantic version numbers withoun suffixes
-* [ ] Support for label suffixes
-* [ ] Validate a single semantic version number
+* [X] Compare two semantic version numbers without suffixes
+* [X] Validate a single semantic version number
+* [ ] Support for pre-release suffixes (e.g. `1.2.3-pre.1.blah.2`)
+* [ ] Support for build suffixes (e.g. `1.2.3-pre+build123`)
 * [ ] Ranges
     - [ ] Partial versions, e.g. v1.2 contains v1.2.3
     - [ ] Explicit ranges, e.g. v1.2.0..v1.2.5 contains v1.2.3
@@ -29,34 +30,40 @@ Handy for comparing versions in continuous integration (CI) scripts, &c.
     
 # Usage
 
+## Verify a Single Version
+
+```sh
+semvercmp VERSION
+```
+
+VERSION is a semantic version with or without a `v` prefix.
+
+A zero exit status code indicates a valid version number.
+
 ## Compare Two Versions
 
 ```sh
-semvercmp LEFT RIGHT 
+semvercmp ONE TWO 
 ```
 
-LEFT and RIGHT are semantic versions with or without `v` prefix.
+ONE and TWO are semantic versions with or without `v` prefix.
 
-Prints text to standard output to indicate the relationship between LEFT and RIGHT:
-
-* `less`: LEFT is less than RIGHT
-* `equal`: LEFT and RIGHT are equal
-* `greater`: LEFT is greater than RIGHT
-
-Returns an error code if either version is invalid.
+A zero exit status code indicates equal versions.
+An exit status code of 1 indicates version ONE is greater; a status code of 2 indicates TWO is greater.
+An exit status code of 255 indicates an invalid status code was provided.
 
 ### Examples
 
 ```
+$ semvercmp v1.2.3
+$ semver cmp v1.2.3
 $ semvercmp v1.2.3 v1.2.5
-less
 $ semvercmp 4.5.10 4.5.1
-greater
 ```
 
 # About
 
-SemVerCmp is written and maintained by Paul Ruane (<paul.ruane@oniony.com>) and
+SEM·VER·CMP is written and maintained by Paul Ruane (<paul.ruane@oniony.com>) and
 is available at <http://github.com/oniony/semvercmp/>.
 
 Written in Rust: <http://rust-lang.org/>
