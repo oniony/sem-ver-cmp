@@ -1,3 +1,15 @@
+# Usages
+
+* `semvercmp VER` - validates a version number
+* `semvercmp LEFT RIGHT` - compares two versions
+* `semvercmp LEFT OPERATOR RIGHT` - asserts relationship between LEFT and RIGHT is OPERATOR
+    - `=` or `==` or `eq`
+    - `!=` or `ne`
+    - `<` or `lt`
+    - `>` or `gt`
+    - `<=` or `le`
+    - `>=` or `ge`
+
 # Cases
 
 A == B true
